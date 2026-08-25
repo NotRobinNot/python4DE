@@ -2,37 +2,41 @@ PIPELINE = {
     "layer": "landing",
     "run date": "01-01-1234",
 
+    "KAFKA_CONFIG": {
+        "bootstrap_servers": "localhost19092",
+        "topic": ["order_events"]
+    },
+
     # db level detail
-    "database" :{
+    "DB_CONFIG" :{
         "type": "postgres",
-        "host": "db.randcomp.internal",
+        "host": "localhost",
         "port": 5432,
-        "database": "orders_db",
+        "database": "order_db",
         "user": "etl_user",
         "password": "*****",
-        "tables": ["orders"]
+        "tables": ["customers"],
+        "url":"jdbc:postgresql://localhost:5432/order_db"
     },
 
     # expected file format etc
-    "files":{
+    "FILE_CONFIG":{
+        "name": ["order_history"],
         "format": "csv",
         # Static from rootproj
-        "path": "/data/raw/files/orders_history.csv",
+        "path": ["data/raw/files/orders_history.csv"],
         "header": True
     },
 
     # output data / landing / orders
-    "paths":{
-        "output": "/data/landing/files/orders.csv",
-    },
-
     # Full / partial run etc 
-    "Load":{
-        "mode": "FULL"
+    "LOAD_CONFIG":{
+        "mode": "FULL",
+        "output": "data/landing/csvfiles",
     },
 
     # Data expected format in tables
-    "Schemas":{
+    "SCHEMA_CONFIG":{
         "order_id": "string",
         "amount": "decimal(10.2)",
         "country": "string",
@@ -40,8 +44,8 @@ PIPELINE = {
     },
 
     # Whats expected in columns
-    "Data Quality":{
+    "DATA_CONFIG":{
         "required_columns": ["order_id", "amount", "country", "created_dt"],
         "not_null":["order_id"]
-    },
+    }
 }
