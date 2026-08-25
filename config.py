@@ -14,7 +14,7 @@ PIPELINE = {
         "port": 5432,
         "database": "order_db",
         "user": "etl_user",
-        "password": "*****",
+        "password": "etl_pass",
         "tables": ["customers"],
         "url":"jdbc:postgresql://localhost:5432/order_db"
     },

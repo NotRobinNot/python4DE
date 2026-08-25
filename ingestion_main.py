@@ -36,6 +36,7 @@ for table in db_config:
         .option("dbtable", table)
         .option("user", db_user)
         .option("password", db_pwd)
+        .option("driver", "org.postgresql.Driver")
         .load()
     )
 
