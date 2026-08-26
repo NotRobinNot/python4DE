@@ -1,4 +1,4 @@
-#!/Users/gary/code/python_pipeline/.venv/bin/python3.11
+#!/Users/gary/code/python4DE/.venv/bin/python3.11
 import sys
 from faker.cli import execute_from_command_line
 if __name__ == '__main__':

@@ -1,10 +1,12 @@
-PIPELINE = {
+PIPELINE = { #note some of these are pointless and kind of just dropped in from a template from the start, unused
     "layer": "landing",
     "run date": "01-01-1234",
 
     "KAFKA_CONFIG": {
-        "bootstrap_servers": "localhost19092",
-        "topic": ["order_events"]
+        "bootstrap_servers": "localhost:19092",
+        "topic": ["order_events"],
+        "startingOffsets": "earliest",
+        "endingOffsets": "latest"
     },
 
     # db level detail
@@ -32,7 +34,9 @@ PIPELINE = {
     # Full / partial run etc 
     "LOAD_CONFIG":{
         "mode": "FULL",
-        "output": "data/landing/csvfiles",
+        "fileLand": "data/landing/csvfiles",
+        "dbLand": "data/landing/database",
+        "kafkaLand": "data/landing/kafka"
     },
 
     # Data expected format in tables
